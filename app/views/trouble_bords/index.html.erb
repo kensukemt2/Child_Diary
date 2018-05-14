@@ -1,0 +1,15 @@
+<h1>お悩み掲示板</h1>
+<% @bords.each do |bord| %>
+  <%= link_to bord.title, trouble_bords_path(bord.id) %>
+  <%= bord.content %>
+  <%= bord.user.name %>
+<% end %>
+
+<h2>新しいお悩みを投稿する</h2>
+<%= form_with(model: @newbord, local: true) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <%= f.submit %>
+<% end %>

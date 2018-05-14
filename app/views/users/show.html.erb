@@ -1,0 +1,37 @@
+<div>ユーザー情報</div>
+<div>
+  <%= @user.name %>さん
+  <%= @user.child_name %>ちゃん
+  <%= @born_from.to_i %>日目
+</div>
+
+<div>
+  <%= image_tag @user.image %>
+</div>
+<div>
+  自己紹介：<%= @user.comment %>
+</div>
+<!-- <div>
+  フォロワー一覧
+  <%= @user %>
+</div> -->
+<div>
+  <%= link_to "日記を作成する", new_post_path %>
+<div>
+  投稿一覧：
+  <% @user.posts.each do |post| %>
+    <%= link_to post.title, post_path(post.id) %>
+  <% end %>
+</div>
+<div>
+  参加サークル一覧
+  <% @user.circles.each do |circle| %>
+    <%= link_to circle.name, circle_path(circle.id) %>
+  <% end %>
+</div>
+<diV>
+  お気に入り投稿一覧
+  <% @user.favorite_posts.each do |favorite_post| %>
+    <%= link_to favorite_post.post.title, post_path(favorite_post.id) %>
+  <% end %>
+</diV>

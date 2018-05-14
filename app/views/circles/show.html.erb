@@ -1,0 +1,8 @@
+<h1>サークル詳細</h1>
+<%= @circle.name %>
+<%= @circle.content %>
+<%= image_tag @circle.image %>
+<% @circle.each do |circle| %>
+  <%= link_to circle.menber.name, user_path(circle.member.id) %>
+<% end %>
+<%= link_to "サークル一覧に戻る", circles_path %>

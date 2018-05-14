@@ -9,6 +9,23 @@
   </head>
 
   <body>
+    <header>
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+      <% if logged_in? %>
+        <%= link_to "日記一覧", posts_path %>
+        <%= link_to "サークル一覧", circles_path %>
+        <%= link_to "マイ画面へ", user_path(current_user.id) %>
+        <%= link_to "掲示板一覧", trouble_bords_path %>
+        <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
+      <% else %>
+        <%= link_to "ログイン", new_session_path %>
+        <%= link_to "新規ユーザー登録", new_user_path %>
+      <% end %>
+    </header>
     <%= yield %>
+    <footer>
+    </footer>
   </body>
 </html>

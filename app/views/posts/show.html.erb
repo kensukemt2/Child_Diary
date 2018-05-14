@@ -1,0 +1,22 @@
+<h1>日記詳細</h1>
+<div>
+  <%= @post.title %>
+  <%= image_tag @post.image %>
+  <%= @post.content %>
+  By <%= @post.user.name %>
+</div>
+<% @post.comments.each do |comment| %>
+  <div><%= comment.comment %></div>
+<% end %>
+<div>
+<% if @post.user_id == current_user.id %>
+  <%= link_to "編集する", edit_post_path(@post.id) %>
+  <%= link_to "削除する", post_path(@post.id), method: :delete %>
+<% else %>
+  <% if @favorite_post.present? %>
+  <%= link_to "いいね！！解除", favorite_post_path(id: @favorite_post.id,
+    post_id: @post.id),method: :delete %>
+  <% else %>
+    <%= link_to "いいね！！", favorite_posts_path(post_id: @post.id), method: :post %>
+  <% end %>
+<% end %>

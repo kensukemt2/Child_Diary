@@ -1,9 +1,10 @@
 class Post < ApplicationRecord
-  validates :title, precence: true
-  validates :content, precence: true
+  validates :title, presence: true
+  validates :content, presence: true
   belongs_to :user
   has_many :favorite_posts, dependent: :destroy
-  has_many :follower, through: :favorite_posts, source: :user
-  has_many :comment
-  has_many :post_user, through: :comments, source: :user
+  has_many :followers, through: :favorite_posts, source: :user
+  has_many :comments
+  has_many :comment_users, through: :comments, source: :user
+  mount_uploader :image, ImageUploader
 end

@@ -1,0 +1,10 @@
+<h1>日記一覧</h1>
+
+<% @posts.each do |post| %>
+  <div>
+    <%= post.user.name %>
+    <%= link_to post.title, post_path(post.id) %>
+    <%= image_tag post.image %>
+    <%= post.content %>
+</div>
+<% end %>

@@ -1,0 +1,2 @@
+module BordCommentsHelper
+end

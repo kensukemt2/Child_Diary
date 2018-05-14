@@ -1,0 +1,6 @@
+<h1>サークル一覧</h1>
+<% @circles.each do |circle| %>
+  <%= link_to circle.name, circle_path(circle.id) %>
+  <%= circle.conten %>
+<% end %>
+<%= link_to "新規サークル作成", new_circle_path %>
