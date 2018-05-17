@@ -6,26 +6,70 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
 
   <body>
-    <header>
+
+    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <% if logged_in? %>
+            <%= "こんにちは#{current_user.name}さん" %>
+          <% else %>
+            <%= "ようこそ！！Child_Diaryへ！！" %>
+          <% end %>
+        </a>
+        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <% if logged_in? %>
+              <li class="nav-item mx-0 mx-lg-1"><%= link_to "日記一覧", posts_path, class:"nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" %></li>
+              <li class="nav-item mx-0 mx-lg-1"><%= link_to "サークル一覧", circles_path, class:"nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" %></li>
+              <li class="nav-item mx-0 mx-lg-1"><%= link_to "マイ画面へ", user_path(current_user.id), class:"nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" %></li>
+              <li class="nav-item mx-0 mx-lg-1"><%= link_to "掲示板一覧", trouble_bords_path, class:"nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" %></li>
+              <li class="nav-item mx-0 mx-lg-1"><%= link_to "ログアウト", session_path(current_user.id), method: :delete, class:"nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" %></li>
+
+            <% else %>
+              <li class="nav-item mx-0 mx-lg-1"><%= link_to "ログイン", new_session_path, class:"nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" %></li>
+              <li class="nav-item mx-0 mx-lg-1"><%= link_to "新規ユーザー登録", new_user_path, class:"nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <header class="masthead bg-primary text-white text-center">
+
+      <div class="container">
+        <h1 class="mb-0">Child Diary</h1>
+        <hr class="star-light">
+        <h2 class="font-weight-light mb-0">ママと子供の成長日記へようこそ</h2>
+        <h2 class="font-weight-light mb-0">子育てママを応援します！！</h2>
+      </div>
       <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "#{key}") %>
-      <% end %>
-      <% if logged_in? %>
-        <%= link_to "日記一覧", posts_path %>
-        <%= link_to "サークル一覧", circles_path %>
-        <%= link_to "マイ画面へ", user_path(current_user.id) %>
-        <%= link_to "掲示板一覧", trouble_bords_path %>
-        <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
-      <% else %>
-        <%= link_to "ログイン", new_session_path %>
-        <%= link_to "新規ユーザー登録", new_user_path %>
+        <%= content_tag(:div, value, class: "#{key} display-1 text-primover") %>
       <% end %>
     </header>
     <%= yield %>
     <footer>
+      <div class="copyright py-4 text-center text-white">
+        <div class="container">
+          <small>Copyright &copy; KensukeMatsumoto 2018</small>
+        </div>
+      </div>
     </footer>
+    <!-- Plugin JavaScript -->
+    <!-- <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script> -->
+
+    <!-- Custom scripts for this template -->
+    <script src="js/freelancer.min.js"></script>
   </body>
 </html>

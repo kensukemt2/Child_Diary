@@ -1,17 +1,33 @@
 ja:
   activerecord:
     models:
-      blog: "ブログ"
+      post: "成長日記"
       user: "ユーザー"
+      circle: "サークル"
+      trouble_bord: "お悩み掲示板"
+      comment: "コメント"
+      bord_comment: "掲示板コメント"
     attributes:
-      blog:
+      post:
         title: "タイトル"
         content: "内容"
       user:
-        title: "タイトル"
         name: "名前"
         email: "メールアドレス"
+        child_name: "お子様のお名前"
+        birthday: "お子様の誕生日"
+        image: "タイトル画像"
+        comment: "自己紹介"
         current_password: "現在のパスワード"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
+      circle:
+        circle_name: "サークル名"
+        circle_content: "紹介文"
+      comment:
+        content: "コメント内容"
+      trouble_bord:
+        title: "タイトル"
+        content: "内容"
+        comment: "コメント"

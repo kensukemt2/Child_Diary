@@ -1,6 +1,6 @@
 <h1>お悩み掲示板</h1>
 <% @bords.each do |bord| %>
-  <%= link_to bord.title, trouble_bords_path(bord.id) %>
+  <%= link_to bord.title, trouble_bord_path(bord.id) %>
   <%= bord.content %>
   <%= bord.user.name %>
 <% end %>

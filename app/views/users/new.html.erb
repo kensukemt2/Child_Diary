@@ -1,3 +1,4 @@
+<h1>新規ユーザー登録画面</h1>
 <% if @user.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@user.errors.count, "error") %></h2>
@@ -11,36 +12,36 @@
 
 <%= form_with(model: @user,local: true) do |f| %>
 <div>
-  <%= f.label :name,"お名前" %>
+  <%= f.label :name %>
   <%= f.text_field :name %>
 </div>
 <div>
-  <%= f.label :email,"メールアドレス" %>
+  <%= f.label :email %>
   <%= f.text_field :email %>
 </div>
 <div>
-  <%= f.label :child_name,"お子様のお名前" %>
+  <%= f.label :child_name %>
   <%= f.text_field :child_name %>
 </div>
 <div>
-  <%= f.label :birthday,"お子様の誕生日" %>
+  <%= f.label :birthday %>
   <%= f.date_select :birthday %>
 </div>
 <div>
-  <%= f.label :image,"タイトル画像" %>
+  <%= f.label :image %>
   <%= f.file_field :image , id: :user_image %>
   <%= f.hidden_field :image_cache %>
 </div>
 <div>
-  <%= f.label :comment,"自己紹介" %>
+  <%= f.label :comment %>
   <%= f.text_area :comment %>
 </div>
 <div>
-  <%= f.label :password,"パスワード" %>
+  <%= f.label :password %>
   <%= f.password_field :password %>
 </div>
 <div>
-  <%= f.label :password_confirmation,"パスワードの確認" %>
+  <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
 </div>
 

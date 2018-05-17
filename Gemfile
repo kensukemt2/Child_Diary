@@ -31,7 +31,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.11'
 gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
 
-gem 'letter_opener_web'
 
 gem 'devise'
 
@@ -53,6 +52,8 @@ gem 'ransack'
 
 # Use Capistrano for deployment
 group :development do
+  gem 'letter_opener_web'
+  gem 'letter_opener'
   gem 'capistrano', '3.6.0'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
@@ -70,6 +71,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13.0'
   gem 'selenium-webdriver'
+  gem 'faker'
 end
 
 group :development do

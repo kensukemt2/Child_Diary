@@ -1,37 +1,59 @@
-<div>ユーザー情報</div>
+<h1>ユーザー情報</h1>
 <div>
-  <%= @user.name %>さん
-  <%= @user.child_name %>ちゃん
-  <%= @born_from.to_i %>日目
+  <h2><%= @user.name %>さん</h2>
+  <h2><%= @user.child_name %>ちゃん</h2>
+  <h2><%= @born_from.to_i %>日目</h2>
 </div>
-
+<div>
+  <% unless current_user.id == @user.id %>
+    <% unless current_user.following?(@user) %>
+      <%= form_with(model: current_user.active_favorite_users.new(followed_id: @user.id)) do |f| %>
+        <%= f.hidden_field :followed_id %>
+        <%= f.submit "このユーザーとお友達になる" %>
+      <% end %>
+    <% else %>
+      <%= form_with(model: current_user.active_favorite_users.find_by(followed_id: @user.id), method: :delete ) do |f| %>
+        <%= f.submit "お友達を解除" %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
 <div>
   <%= image_tag @user.image %>
 </div>
 <div>
   自己紹介：<%= @user.comment %>
 </div>
-<!-- <div>
-  フォロワー一覧
-  <%= @user %>
-</div> -->
 <div>
-  <%= link_to "日記を作成する", new_post_path %>
+  フォロワー一覧：
+  <div>
+    <% @user.following.each do |user| %>
+      <%= link_to user.name, user_path(user.id) %>
+    <% end %>
+  </div>
+</div>
+
 <div>
-  投稿一覧：
+  日記一覧：
   <% @user.posts.each do |post| %>
     <%= link_to post.title, post_path(post.id) %>
   <% end %>
 </div>
 <div>
-  参加サークル一覧
-  <% @user.circles.each do |circle| %>
-    <%= link_to circle.name, circle_path(circle.id) %>
+  <% if current_user.id == @user.id %>
+    <%= link_to "日記を作成する", new_post_path %>
+    <%= link_to "自分の日記一覧を見る", posts_path(id: @user.id) %>
+  <% end %>
+</div>
+<div>
+  参加サークル一覧：
+  <% @user.favorite_circles.each do |circle| %>
+    <%= link_to circle.circle_name, circle_path(circle.id) %>
   <% end %>
 </div>
 <diV>
-  お気に入り投稿一覧
+  お気に入り投稿一覧：
   <% @user.favorite_posts.each do |favorite_post| %>
-    <%= link_to favorite_post.post.title, post_path(favorite_post.id) %>
+    <%= link_to favorite_post.post.title, post_path(favorite_post.post.id) %>
   <% end %>
 </diV>

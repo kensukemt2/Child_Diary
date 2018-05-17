@@ -1,6 +1,19 @@
 <h1>サークル一覧</h1>
+<%= search_form_for @search do |f| %>
+  <div class="form-group">
+    <%= f.label :circle_name_or_circle_members_user_name_cont, "検索します" %>
+    <%= f.text_field :circle_name_or_circle_members_user_name_cont, class: "form-controll" %>
+  </div>
+  <div class="actions"><%= f.submit "検索" %></div>
+<% end %>
+
+<% if @search_circles.empty? %>
+  <%= "検索結果はありませんでした" %>
+  <%= link_to "サークル一覧を表示する", circles_path %>
+<% end %>
+
 <% @circles.each do |circle| %>
-  <%= link_to circle.name, circle_path(circle.id) %>
-  <%= circle.conten %>
+  <%= link_to circle.circle_name, circle_path(circle.id) %>
+  <%= circle.circle_content %>
 <% end %>
 <%= link_to "新規サークル作成", new_circle_path %>

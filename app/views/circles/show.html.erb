@@ -1,8 +1,22 @@
 <h1>サークル詳細</h1>
-<%= @circle.name %>
-<%= @circle.content %>
-<%= image_tag @circle.image %>
-<% @circle.each do |circle| %>
-  <%= link_to circle.menber.name, user_path(circle.member.id) %>
+<%= @circle.circle_name %>
+<%= @circle.circle_content %>
+<%= image_tag @circle.circle_image %>
+
+<% @circle.circle_members.each do |circlemember| %>
+  <%= link_to circlemember.user.name, user_path(circlemember.user.id) %>
+<% end %>
+
+<% if @circlemember.present? %>
+  <% if current_user.id != @circle.user_id %>
+    <%= link_to "サークルをやめます", circle_member_path(circle_id: @circle.id), method: :delete %>
+  <% end %>
+<% else %>
+  <%= link_to "サークルに参加する", circle_members_path(circle_id: @circle.id), method: :post %>
+<% end %>
+
+<% if current_user.id == @circle.user_id %>
+  <%= link_to "サークル内容を変更する", edit_circle_path(@circle.id) %>
+  <%= link_to "サークルを削除する",circle_path(@circle.id),method: :delete, data: { confirm: '本当に削除していいですか？' } %>
 <% end %>
 <%= link_to "サークル一覧に戻る", circles_path %>

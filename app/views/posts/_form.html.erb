@@ -1,3 +1,14 @@
+<% if @post.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@post.errors.count, "error") %></h2>
+    <ul>
+      <% @post.errors.full_messages.each do |m| %>
+        <li><%= m %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_with(model: @post, local: true) do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
@@ -6,6 +17,6 @@
   <%= f.label :image %>
   <%= f.file_field :image %>
   <%= f.hidden_field :image_cache %>
-  <%= f.submit "新規作成する" %>
+  <%= f.submit "登録する" %>
 <% end %>
 <%= link_to "マイページに戻る", user_path(current_user.id) %>

@@ -10,6 +10,7 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     if @post.save
       redirect_to user_path(current_user.id), notice: "日記を作成しました"
+      NoticeMailer.notice_mail(@post).deliver
     else
       render 'new'
     end
@@ -17,14 +18,24 @@ class PostsController < ApplicationController
 
   def show
     @favorite_post = current_user.favorite_posts.find_by(post_id: @post.id)
+    @comment = @post.comments.build
+    @comments = @post.comments
   end
 
   def index
+    @search = Post.search(params[:q])
+    @search_posts = @search.result.includes(:user).page(params[:page])
+
     current_user_id = params[:id]
+
     if current_user_id.nil?
-      @posts = Post.all
+      if @search_posts.nil?
+        @posts = Post.page(params[:page])
+      else
+        @posts = @search_posts
+      end
     else
-      @posts = Post.where(id: current_user_id)
+      @posts = Post.where(user_id: current_user_id).page(params[:page])
     end
   end
 
@@ -33,7 +44,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to user_path(current_user.id), notice: "日記を編集しました"
+      redirect_to post_path(@post.id), notice: "日記を編集しました"
     else
       render 'edit'
     end

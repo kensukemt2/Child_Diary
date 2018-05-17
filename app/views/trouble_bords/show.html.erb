@@ -1,13 +1,14 @@
-<%= @bord.each do |bord| %>
-  <%= bord.title %>
-  <%= bord.conten %>
-<% end %>
+  <%= @bord.title %>
+  <%= @bord.content %>
+  <%= @bord.user.name %>
+
 <% @comments.each do |comment| %>
   <%= comment.comment %>
   <%= comment.user.name %>
 <% end %>
-<%= form_with(model: @comment, local: true) do |comment| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.submit "投稿する" %>
+<%= form_with(model: [@bord, @newcomment], local: true) do |f| %>
+  <%= f.label :comment %>
+  <%= f.text_field :comment %>
+  <%= f.submit "コメントする" %>
 <% end %>
+<%= link_to "掲示板一覧へ", trouble_bords_path %>

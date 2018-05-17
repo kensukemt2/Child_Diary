@@ -1,12 +1,12 @@
 class TroubleBordsController < ApplicationController
-  berore_action :force_top
+  before_action :force_top
   def index
     @bords = TroubleBord.all
     @newbord = TroubleBord.new
   end
 
   def create
-    @newbord = TroubleBord.new(params[:TroubleBord].permit[:title, :content])
+    @newbord = TroubleBord.new(bord_params)
     @newbord.user_id = current_user.id
     @newbord.save
     redirect_to trouble_bords_path
@@ -14,7 +14,7 @@ class TroubleBordsController < ApplicationController
 
   def show
     @bord = TroubleBord.find(params[:id])
-    @newcomment = BordComment.new(:trouble_bord_id)
+    @newcomment = BordComment.new(trouble_bord_id: @bord.id)
     @comments = BordComment.where(trouble_bord_id: params[:id])
   end
 
@@ -22,5 +22,9 @@ class TroubleBordsController < ApplicationController
     @bord.delete
     redirect_to trouble_bords_path
   end
+  private
 
+  def bord_params
+    params.require(:trouble_bord).permit(:title, :content)
+  end
 end

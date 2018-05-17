@@ -1,6 +1,7 @@
 class TroubleBord < ApplicationRecord
-  validates :title, precence: true
-  validates :content, precence: true
-  validates :user_id, precence: true
+  validates :title, presence: true
+  validates :content, presence: true
+  validates :user_id, presence: true
   has_many :bord_comments, dependent: :destroy
+  belongs_to :user
 end

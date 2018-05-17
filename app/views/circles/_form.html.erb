@@ -1,10 +1,21 @@
+<% if @circle.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@circle.errors.count, "error") %></h2>
+    <ul>
+      <% @circle.errors.full_messages.each do |m| %>
+        <li><%= m %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_with(model: @circle, local: true) do |f| %>
   <%= f.label :circle_name %>
   <%= f.text_field :circle_name %>
   <%= f.label :circle_content %>
   <%= f.text_field :circle_content %>
   <%= f.label :circle_image %>
-  <%= f.text_field :circle_image %>
+  <%= f.file_field :circle_image, id: :circle_image %>
   <%= f.hidden_field :circle_image_cache %>
   <%= f.submit %>
 <% end %>
