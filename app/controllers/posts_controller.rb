@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to user_path(current_user.id), notice: "日記を作成しました"
+      redirect_to post_path(@post.id), notice: "日記を作成しました"
       NoticeMailer.notice_mail(@post).deliver
     else
       render 'new'

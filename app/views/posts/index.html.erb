@@ -1,6 +1,6 @@
-<section class="portfolio" id="portfolio">
+<section class="portfolio bg-secondary" id="portfolio">
   <div class="container">
-    <h2 class="text-center text-uppercase text-primary mb-0">日記一覧</h2>
+    <h2 class="text-center text-primary mb-0">日記一覧</h2>
     <%= search_form_for @search do |f| %>
       <div class="input-group">
         <!-- <%= f.label :title_or_content_or_user_name_cont, "検索" %> -->
@@ -21,15 +21,18 @@
 
     <div class="row">
       <% @posts.each do |post| %>
-      <div class="col-md-6 col-lg-4 post-grid">
+      <div class="col-md-6 col-lg-4">
         <!-- <%= post.title %> -->
         <%= link_to post_path(post.id) do %>
-          <div>タイトル：<%= post.title %></div>
-          <div>投稿者：<%= post.user.name %></div>
-          <div><%= image_tag post.image %></div>
+        <div class="post-grid">
+          <p>タイトル：<%= post.title %></p>
+          <p>投稿者：<%= post.user.name %></p>
+          <p><%= image_tag post.image %></p>
+        </div>
         <% end %>
       </div>
       <% end %>
-      <%= paginate @posts %>
-
-  </section>
+    </div>
+    <%= paginate @posts %>
+  </div>
+</section>

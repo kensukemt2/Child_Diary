@@ -1,9 +1,11 @@
-<ul>
-  <% comments.each do |comment| %>
-    <% unless comment.id.nil? %>
-      <li>
-        <p><%= comment.content %></p>
-      </li>
+<div class="container">
+  <ul class="list-unstyled row justify-content-center">
+    <% comments.each do |comment| %>
+      <% unless comment.id.nil? %>
+        <li class="col-8">
+          <p class="comment"><%= comment.content %></p>
+        </li>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
+</div>

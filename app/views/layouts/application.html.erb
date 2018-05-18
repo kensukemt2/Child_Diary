@@ -18,7 +18,7 @@
       <div class="container">
         <a class="navbar-brand" href="#">
           <% if logged_in? %>
-            <%= "こんにちは#{current_user.name}さん" %>
+            <%= "こんにちは!! #{current_user.name}さん" %>
           <% else %>
             <%= "ようこそ！！Child_Diaryへ！！" %>
           <% end %>
@@ -53,9 +53,9 @@
         <h2 class="font-weight-light mb-0">ママと子供の成長日記へようこそ</h2>
         <h2 class="font-weight-light mb-0">子育てママを応援します！！</h2>
       </div>
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "#{key} display-1 text-primover") %>
-      <% end %>
+        <% flash.each do |key, value| %>
+          <h1><%= content_tag(:div, value, class: "#{key} text-primover") %></h1>
+        <% end %>
     </header>
     <%= yield %>
     <footer>
@@ -65,11 +65,5 @@
         </div>
       </div>
     </footer>
-    <!-- Plugin JavaScript -->
-    <!-- <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script> -->
-
-    <!-- Custom scripts for this template -->
-    <script src="js/freelancer.min.js"></script>
   </body>
 </html>

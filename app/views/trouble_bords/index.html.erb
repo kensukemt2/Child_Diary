@@ -1,15 +1,35 @@
-<h1>お悩み掲示板</h1>
-<% @bords.each do |bord| %>
-  <%= link_to bord.title, trouble_bord_path(bord.id) %>
-  <%= bord.content %>
-  <%= bord.user.name %>
-<% end %>
+<section class="portfolio bg-secondary" id="portfolio">
+  <div class="container">
+    <h2 class="text-center text-primary mb-0">お悩み掲示板</h2>
+    <div class="row mb-5">
+      <% @bords.each do |bord| %>
+      <div class="col-md-6 col-lg-4">
+        <div class="post-grid">
+          <%= link_to trouble_bord_path(bord.id) do %>
+          <p><%= bord.title %></p>
+          <p><%= bord.content %></p>
+          <p>By: <%= bord.user.name %></p>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
 
-<h2>新しいお悩みを投稿する</h2>
-<%= form_with(model: @newbord, local: true) do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :content %>
-  <%= f.text_field :content %>
-  <%= f.submit %>
-<% end %>
+    <h2 class="text-center text-primary mb-5">新しいお悩みを投稿する</h2>
+    <%= form_with(model: @newbord, local: true) do |f| %>
+      <div class="form-group row">
+        <%= f.label :title, class:"cotrol-label col-2" %>
+        <div class="col-8"><%= f.text_field :title, class: "form-control" %></div>
+      </div>
+      <div class="form-group row">
+        <%= f.label :content, class:"cotrol-label col-2" %>
+        <div class="col-8"><%= f.text_area :content, class: "form-control" %></div>
+      </div>
+      <div class="form-group row text-center">
+        <div class="offset-2 pl-3">
+          <%= f.submit %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

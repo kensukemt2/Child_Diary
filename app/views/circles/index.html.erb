@@ -1,19 +1,32 @@
-<h1>サークル一覧</h1>
-<%= search_form_for @search do |f| %>
-  <div class="form-group">
-    <%= f.label :circle_name_or_circle_members_user_name_cont, "検索します" %>
-    <%= f.text_field :circle_name_or_circle_members_user_name_cont, class: "form-controll" %>
+<section class="portfolio bg-secondary" id="portfolio">
+  <div class="container">
+    <h2 class="text-center text-primary mb-2">サークル一覧</h2>
+    <%= search_form_for @search do |f| %>
+      <div class="input-group">
+        <!-- <%= f.label :circle_name_or_circle_members_user_name_cont, "検索します" %> -->
+        <%= f.text_field :circle_name_or_circle_members_user_name_cont, class: "form-controll" %>
+
+        <div class="input-group-btn"><%= button_tag '<i class="fa fa-search"></i>検索'.html_safe, type: "submit", class: "btn btn-default btn-s-md" %></div>
+      </div>
+    <% end %>
+
+    <% if @search_circles.empty? %>
+      <%= "検索結果はありませんでした" %>
+      <%= link_to "サークル一覧を表示する", circles_path %>
+    <% end %>
+    <div class="row">
+      <% @circles.each do |circle| %>
+        <div class="col-md-6 col-lg-4">
+          <div class="post-grid">
+            <%= link_to circle_path(circle.id) do %>
+            <p><%= circle.circle_name %></p>
+            <p><%= circle.circle_content %></p>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+      <div class="text-center"><%= link_to "新規サークル作成", new_circle_path, class: "btn btn-primary btn-lg rounded-pill" %></div>
+
   </div>
-  <div class="actions"><%= f.submit "検索" %></div>
-<% end %>
-
-<% if @search_circles.empty? %>
-  <%= "検索結果はありませんでした" %>
-  <%= link_to "サークル一覧を表示する", circles_path %>
-<% end %>
-
-<% @circles.each do |circle| %>
-  <%= link_to circle.circle_name, circle_path(circle.id) %>
-  <%= circle.circle_content %>
-<% end %>
-<%= link_to "新規サークル作成", new_circle_path %>
+</section>

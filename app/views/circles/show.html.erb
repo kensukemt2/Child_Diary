@@ -1,22 +1,40 @@
-<h1>サークル詳細</h1>
-<%= @circle.circle_name %>
-<%= @circle.circle_content %>
-<%= image_tag @circle.circle_image %>
+<div class="portfolio-modal">
+  <div class="portfolio-modal-dialog bg-secondary">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2 class="text-primary mb-0">
+            <%= @circle.circle_name %>
+          </h2>
+          <%= image_tag @circle.circle_image %>
+          <hr class="star-dark">
+          <p>サークルコメント</p>
+          <h3 class="text-primary mb-5">
+            <%= @circle.circle_content %>
+          </h3>
+          <hr class="star-dark">
+          <p>サークルメンバー一覧</p>
+            <% @circle.circle_members.each do |circlemember| %>
+              <p class="mb-5"><%= link_to circlemember.user.name, user_path(circlemember.user.id) %></p>
+            <% end %>
+            <hr class="star-dark">
+            <div class="text-center mb-5">
+              <% if @circlemember.present? %>
+              <% if current_user.id != @circle.user_id %>
+                <%= link_to "サークルをやめます", circle_member_path(circle_id: @circle.id), method: :delete,class: "btn btn-danger btn-lg rounded-pill"  %>
+              <% end %>
+            <% else %>
+              <%= link_to "サークルに参加する", circle_members_path(circle_id: @circle.id), method: :post, class: "btn btn-primary btn-lg rounded-pill"  %>
+            <% end %>
 
-<% @circle.circle_members.each do |circlemember| %>
-  <%= link_to circlemember.user.name, user_path(circlemember.user.id) %>
-<% end %>
-
-<% if @circlemember.present? %>
-  <% if current_user.id != @circle.user_id %>
-    <%= link_to "サークルをやめます", circle_member_path(circle_id: @circle.id), method: :delete %>
-  <% end %>
-<% else %>
-  <%= link_to "サークルに参加する", circle_members_path(circle_id: @circle.id), method: :post %>
-<% end %>
-
-<% if current_user.id == @circle.user_id %>
-  <%= link_to "サークル内容を変更する", edit_circle_path(@circle.id) %>
-  <%= link_to "サークルを削除する",circle_path(@circle.id),method: :delete, data: { confirm: '本当に削除していいですか？' } %>
-<% end %>
-<%= link_to "サークル一覧に戻る", circles_path %>
+            <% if current_user.id == @circle.user_id %>
+              <%= link_to "サークル内容を変更する", edit_circle_path(@circle.id),class: "btn btn-primary btn-lg rounded-pill"  %>
+              <%= link_to "サークルを削除する",circle_path(@circle.id),method: :delete, data: { confirm: '本当に削除していいですか？' },class: "btn btn-danger btn-lg rounded-pill"  %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <p class="mb-1"><%= link_to "サークル一覧に戻る", circles_path, class: "btn btn-primary btn-lg rounded-pill"  %></p>
+    </div>
+  </div>
+</div>

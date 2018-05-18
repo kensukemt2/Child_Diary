@@ -4,7 +4,7 @@ class BordCommentsController < ApplicationController
     @comment.trouble_bord_id = params[:trouble_bord_id]
     @comment.user_id = current_user.id
     @comment.save
-    redirect_to trouble_bords_path(@comment.trouble_bord_id)
+    redirect_to trouble_bord_path(@comment.trouble_bord_id)
   end
   private
     def bord_comment_params

@@ -1,14 +1,44 @@
-  <%= @bord.title %>
-  <%= @bord.content %>
-  <%= @bord.user.name %>
-
-<% @comments.each do |comment| %>
-  <%= comment.comment %>
-  <%= comment.user.name %>
-<% end %>
-<%= form_with(model: [@bord, @newcomment], local: true) do |f| %>
-  <%= f.label :comment %>
-  <%= f.text_field :comment %>
-  <%= f.submit "コメントする" %>
-<% end %>
-<%= link_to "掲示板一覧へ", trouble_bords_path %>
+<div class="portfolio-modal">
+  <div class="portfolio-modal-dialog bg-secondary">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2 class="text-primary mb-2">
+            <%= @bord.title %>
+          </h2>
+          <p class="mb-5"><%= @bord.content %></p>
+          <p class="text-primary mb-5">By: <%= @bord.user.name %></p>
+        </div>
+      </div>
+      <hr class="star-dark">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <% @comments.each do |comment| %>
+          <div class="comment">
+            <p class="mb-2">
+              <%= comment.comment %>
+            </p>
+            <p class="mb-2 text-secondary">
+              By:<%= comment.user.name %>
+            </p>
+          </div>
+          <% end %>
+        </div>
+      </div>
+        <%= form_with(model: [@bord, @newcomment], local: true) do |f| %>
+          <div class="form-group row">
+            <%= f.label "コメント", class:"col-2 col-form-label col-form-label-lg" %>
+            <div class="col-8">
+              <%= f.text_field :comment, class: "form-control" %>
+            </div>
+          </div>
+          <div class="form-group row text-center">
+            <div class="offset-2 pl-3">
+              <%= f.submit "コメントする" %>
+            </div>
+          </div>
+        <% end %>
+      <p><%= link_to "掲示板一覧へ", trouble_bords_path, class:  "btn btn-info btn-lg rounded-pill" %></p>
+    </div>
+  </div>
+</div>

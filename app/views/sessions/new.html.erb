@@ -1,12 +1,18 @@
-<h1>ユーザーログイン画面</h1>
-<%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
-<div>
-  <%= f.label :email,"メールアドレス" %>
-  <%= f.text_field :email %>
+<div class="container text-center text-primary justify-content-center">
+  <h2>ユーザーログイン画面</h2>
+  <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+  <div class="form-group row">
+    <%= f.label :email,"メールアドレス", class:"cotrol-label col-2"  %>
+    <div class="col-8"><%= f.text_field :email, class: "form-control" %></div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :password,"パスワード", class:"cotrol-label col-2"  %>
+    <div class="col-8"><%= f.password_field :password, class: "form-control" %></div>
+  </div>
+  <div class="form-group row">
+    <div class="offset-2 pl-3">
+      <%= f.submit "ログインします" %>
+    </div>
+  </div>
+  <% end %>
 </div>
-<div>
-  <%= f.label :password,"パスワード" %>
-  <%= f.password_field :password %>
-</div>
-<%= f.submit "ログインします" %>
-<% end %>

@@ -25,6 +25,7 @@ ja:
       circle:
         circle_name: "サークル名"
         circle_content: "紹介文"
+        circle_image: "イメージ画像"
       comment:
         content: "コメント内容"
       trouble_bord:
