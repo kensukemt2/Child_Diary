@@ -31,7 +31,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.11'
 gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
 
-
 gem 'devise'
 
 gem 'twitter-bootstrap-rails'
@@ -49,6 +48,10 @@ gem 'mini_magick'
 gem 'kaminari'
 
 gem 'ransack'
+
+gem 'fog', '~> 1.41.0'
+
+gem 'dotenv-rails'
 
 # Use Capistrano for deployment
 group :development do

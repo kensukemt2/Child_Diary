@@ -1,0 +1,5 @@
+find_executable: checking for xml2-config... -------------------- no
+
+--------------------
+
+package configuration for libxml2 is not found
