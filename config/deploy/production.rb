@@ -1,2 +1,2 @@
-server '13.115.41.130', user: 'app', roles: %w{app db web}
-set :ssh_options, keys: 'C:\Users\kensukemt2\.ssh\id_rsa'
+server '13.115.41.130', user: 'vagrant', roles: %w{app db web}
+set :ssh_options, keys: '/home/vagrant/.ssh/id_rsa'
