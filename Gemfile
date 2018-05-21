@@ -53,7 +53,7 @@ gem 'fog', '~> 1.41.0'
 
 gem 'dotenv-rails'
 
-gem 'unicorn'
+
 
 gem 'therubyracer', platforms: :ruby
 
@@ -64,10 +64,10 @@ group :development do
 
 end
 
-
-gem 'omniauth'
-gem 'omniauth-twitter'
-gem 'omniauth-facebook'
+# gem 'unicorn'
+# gem 'omniauth'
+# gem 'omniauth-twitter'
+# gem 'omniauth-facebook'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -76,11 +76,13 @@ group :development, :test do
   gem 'capybara', '~> 2.13.0'
   gem 'selenium-webdriver'
   gem 'faker'
-  gem 'capistrano', '3.6.0'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails'
-  gem 'capistrano-rbenv' 
-  gem 'capistrano3-unicorn'
+
+  #今回実装見送り
+  # gem 'capistrano', '3.6.0'
+  # gem 'capistrano-bundler'
+  # gem 'capistrano-rails'
+  # gem 'capistrano-rbenv'
+  # gem 'capistrano3-unicorn'
 end
 
 group :development do
