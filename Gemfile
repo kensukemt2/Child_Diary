@@ -53,14 +53,15 @@ gem 'fog', '~> 1.41.0'
 
 gem 'dotenv-rails'
 
+gem 'unicorn'
+
+gem 'therubyracer', platforms: :ruby
+
 # Use Capistrano for deployment
 group :development do
   gem 'letter_opener_web'
   gem 'letter_opener'
-  gem 'capistrano', '3.6.0'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails'
-  gem 'capistrano3-unicorn'
+
 end
 
 
@@ -75,6 +76,11 @@ group :development, :test do
   gem 'capybara', '~> 2.13.0'
   gem 'selenium-webdriver'
   gem 'faker'
+  gem 'capistrano', '3.6.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv' 
+  gem 'capistrano3-unicorn'
 end
 
 group :development do
