@@ -18,4 +18,5 @@ CarrierWave.configure do |config|
       config.fog_directory = 'child-diary_development'
       config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/child-diary_development'
   end
+  # config.cache_dir = "#{Rails.root}/tmp/uploads"
 end

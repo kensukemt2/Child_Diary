@@ -10,7 +10,9 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     if @post.save
       redirect_to post_path(@post.id), notice: "日記を作成しました"
-      NoticeMailer.notice_mail(@post).deliver
+      unless @post.user.followers.blank?
+        NoticeMailer.notice_mail(@post).deliver
+      end
     else
       render 'new'
     end
