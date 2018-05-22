@@ -53,7 +53,7 @@ gem 'fog', '~> 1.41.0'
 
 gem 'dotenv-rails'
 
-
+gem "font-awesome-rails"
 
 gem 'therubyracer', platforms: :ruby
 
