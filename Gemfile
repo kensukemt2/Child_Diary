@@ -55,6 +55,8 @@ gem 'dotenv-rails'
 
 gem "font-awesome-rails"
 
+gem 'font-awesome-sass', '~> 5.0.13'
+
 gem 'therubyracer', platforms: :ruby
 
 # Use Capistrano for deployment

@@ -12,11 +12,11 @@ CarrierWave.configure do |config|
 
   case Rails.env
     when 'production'
-      config.fog_directory = 'child-diary_production'
-      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/child-diary_production'
+      config.fog_directory = 'child-diary-production'
+      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/child-diary-production'
     when 'development'
-      config.fog_directory = 'child-diary_development'
-      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/child-diary_development'
+      config.fog_directory = 'child-diary-development'
+      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/child-diary-development'
   end
   # config.cache_dir = "#{Rails.root}/tmp/uploads"
 end
