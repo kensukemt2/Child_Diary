@@ -7,10 +7,10 @@ class User < ApplicationRecord
   before_save { email.downcase! }
 
   has_many :posts, dependent: :destroy
-  has_many :trouble_bords
-  has_many :bord_comments
-  has_many :comments
-  has_many :circles
+  has_many :trouble_bords, dependent: :destroy
+  has_many :bord_comments, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :circles, dependent: :destroy
 
   has_many :favorite_posts, dependent: :destroy
   has_many :favorite_another_posts, through: :favorite_posts, source: :post

@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.delete
+    @user.destroy
     redirect_to root_path, notice: "ユーザー情報を削除しました"
   end
 

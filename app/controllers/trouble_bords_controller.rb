@@ -19,7 +19,7 @@ class TroubleBordsController < ApplicationController
   end
 
   def destroy
-    @bord.delete
+    @bord.destroy
     redirect_to trouble_bords_path
   end
 
