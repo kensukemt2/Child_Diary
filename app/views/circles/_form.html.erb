@@ -1,8 +1,8 @@
-<div class="mb-5 list-unstyled">
+<div class="mb-5">
   <% if @circle.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@circle.errors.count, "error") %></h2>
-      <ul>
+      <ul class="list-unstyled">
         <% @circle.errors.full_messages.each do |m| %>
           <li><%= m %></li>
         <% end %>
@@ -13,15 +13,15 @@
 
 <%= form_with(model: @circle, local: true) do |f| %>
   <div class="form-group row">
-    <%= f.label :circle_name, class:"cotrol-label col-2" %>
+    <%= f.label :circle_name, class:"control-label col-2" %>
     <div class="col-8"><%= f.text_field :circle_name, class: "form-control" %></div>
   </div>
   <div class="form-group row">
-    <%= f.label :circle_content, class:"cotrol-label col-2" %>
+    <%= f.label :circle_content, class:"control-label col-2" %>
     <div class="col-8"><%= f.text_area :circle_content, class: "form-control" %></div>
   </div>
   <div class="form-group row">
-    <%= f.label :circle_image, class:"cotrol-label col-2" %>
+    <%= f.label :circle_image, class:"control-label col-2" %>
     <div class="col-8"><%= f.file_field :circle_image, id: :circle_image, class: "form-control-file" %></div>
       <%= f.hidden_field :circle_image_cache %>
   </div>

@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   def show
     @favorite_post = current_user.favorite_posts.find_by(post_id: @post.id)
     @comment = @post.comments.build
-    @comments = @post.comments
+    @comments = @post.comments.order(created_at: :asc)
   end
 
   def index

@@ -1,0 +1,2 @@
+var idComment = <%= @id_comment %>;
+$('.row[data-comment="'+idComment+'"]').parent().html("<%= escape_javascript(render 'form', { comment: @comment, post: @comment.post }) %>");

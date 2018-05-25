@@ -3,8 +3,20 @@
     <% comments.each do |comment| %>
       <% unless comment.id.nil? %>
         <li class="col-8">
-          <p class="comment"><%= comment.content %></p>
+          <div class="comment row" data-comment="<%= comment.id %>">
+            <div class="col-lg-9" id="for_edit">
+              <p><%= comment.content %></p>
+              <p>By:<%= comment.user.name %></p>
+            </div>
+            <div class="col-lg-3">
+            <% if current_user.id == comment.user_id %>
+              <%= link_to "編集する", edit_post_comment_path(id: comment.id, post_id: comment.post_id),remote: true, class: "btn btn-info btn-block badge-pill float-right align-bottom" %>
+              <%= link_to "削除する", post_comment_path(id: comment.id,post_id: comment.post_id), remote: true, method: :delete, class: "btn btn-danger btn-block badge-pill float-right align-bottom" %>
+            <% end %>
+            </div>
+          </div>
         </li>
+
       <% end %>
     <% end %>
   </ul>

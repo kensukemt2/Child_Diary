@@ -22,6 +22,7 @@ class TroubleBordsController < ApplicationController
     @bord.delete
     redirect_to trouble_bords_path
   end
+
   private
 
   def bord_params

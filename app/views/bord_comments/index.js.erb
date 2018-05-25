@@ -1,0 +1,2 @@
+$("#comments_area").html("<%= j(render 'bord_comments/index', {comments: @comment.trouble_bord.bord_comments.order(created_at: :asc), bord: @comment.trouble_bord }) %>")
+$("textarea").val('')

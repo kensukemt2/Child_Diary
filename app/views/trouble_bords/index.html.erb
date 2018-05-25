@@ -14,7 +14,18 @@
       </div>
       <% end %>
     </div>
-
+    <div class="mb-5  text-primary">
+      <% if @newbord.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@newbord.errors.count, "error") %></h2>
+          <ul class="list-unstyled">
+            <% @newbord.errors.full_messages.each do |m| %>
+              <li><%= m %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
     <h2 class="text-center text-primary mb-5">新しいお悩みを投稿する</h2>
     <%= form_with(model: @newbord, local: true) do |f| %>
       <div class="form-group row">

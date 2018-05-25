@@ -11,8 +11,8 @@
     <% end %>
 
     <% if @search_circles.empty? %>
-      <%= "検索結果はありませんでした" %>
-      <%= link_to "サークル一覧を表示する", circles_path %>
+      <div><%= "検索結果はありませんでした" %></div>
+      <div><%= link_to "サークル一覧を表示する", circles_path %></div>
     <% end %>
     <div class="row">
       <% @circles.each do |circle| %>

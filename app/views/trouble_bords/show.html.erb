@@ -11,33 +11,10 @@
         </div>
       </div>
       <hr class="star-dark">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <% @comments.each do |comment| %>
-          <div class="comment">
-            <p class="mb-2">
-              <%= comment.comment %>
-            </p>
-            <p class="mb-2 text-secondary">
-              By:<%= comment.user.name %>
-            </p>
-          </div>
-          <% end %>
-        </div>
+      <div id="comments_area">
+        <%= render partial: 'bord_comments/index', locals: { comments: @comments, bord: @bord } %>
       </div>
-        <%= form_with(model: [@bord, @newcomment], local: true) do |f| %>
-          <div class="form-group row">
-            <%= f.label "コメント", class:"col-2 col-form-label col-form-label-lg" %>
-            <div class="col-8">
-              <%= f.text_field :comment, class: "form-control" %>
-            </div>
-          </div>
-          <div class="form-group row text-center">
-            <div class="offset-2 pl-3">
-              <%= f.submit "コメントする" %>
-            </div>
-          </div>
-        <% end %>
+      <%= render partial: 'bord_comments/form', locals: { comment: @newcomment, bord: @bord } %>
       <p><%= link_to "掲示板一覧へ", trouble_bords_path, class:  "btn btn-info btn-lg rounded-pill" %></p>
     </div>
   </div>

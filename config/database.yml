@@ -25,10 +25,10 @@ default: &default
 development:
   <<: *default
   database: child-diary_development
-  username: postgres
-  password: Postgres1234
+  username: vagrant
+  # password:
   host: localhost
-  port: 5432
+  # port: 5432
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -65,7 +65,7 @@ test:
   database: child-diary_test
   username: postgres
   # password: Postgres1234
-  host: db
+  host: localhost
   port: 5432
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is

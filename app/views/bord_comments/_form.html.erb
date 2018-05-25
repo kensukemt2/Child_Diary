@@ -1,0 +1,13 @@
+<%= form_with(model: [bord, comment]) do |f| %>
+  <div class="form-group row">
+    <%= f.label "コメント", class:"col-2 col-form-label col-form-label-lg" %>
+    <div class="col-8">
+      <%= f.text_area :content, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group row text-center">
+    <div class="offset-2 pl-3">
+      <%= f.submit "コメントする" %>
+    </div>
+  </div>
+<% end %>

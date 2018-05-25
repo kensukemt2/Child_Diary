@@ -1,0 +1,19 @@
+<div class="row">
+  <% comments.each do |comment| %>
+  <div class="col-lg-8 mx-auto">
+    <div class="comment row" id="for_edit" data-comment="<%= comment.id %>">
+      <div class="col-lg-9" id="for_edit">
+        <p class="mb-2"><%= comment.content %></p>
+        <p class="mb-2 text-secondary">By:<%= comment.user.name %></p>
+      </div>
+      <div class="col-lg-3">
+      <% if current_user.id == comment.user_id %>
+        <%= link_to "編集する", edit_trouble_bord_bord_comment_path(id: comment.id, trouble_bord_id: comment.trouble_bord_id),remote: true, class: "btn btn-info btn-block badge-pill float-right align-bottom" %>
+        <%= link_to "削除する", trouble_bord_bord_comment_path(id: comment.id, trouble_bord_id: comment.trouble_bord_id), remote: true, method: :delete, class: "btn btn-danger btn-block badge-pill float-right align-bottom" %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+</div>
