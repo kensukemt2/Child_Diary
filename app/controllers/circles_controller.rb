@@ -12,7 +12,7 @@ class CirclesController < ApplicationController
       circlemember = current_user.circle_members.create(circle_id: @circle.id)
       redirect_to circle_path(@circle.id), notice: "サークルを作成しました"
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -27,7 +27,7 @@ class CirclesController < ApplicationController
     if @circle.update(circle_params)
       redirect_to circle_path(@circle.id)
     else
-      render 'edit'
+      render :edit
     end
   end
 

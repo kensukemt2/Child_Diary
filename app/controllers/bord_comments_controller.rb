@@ -1,5 +1,6 @@
 class BordCommentsController < ApplicationController
   before_action :set_comment, only: %i[edit update destroy]
+
   def create
     @bord = TroubleBord.find(params[:trouble_bord_id])
     @comment = @bord.bord_comments.new(bord_comment_params)

@@ -15,7 +15,6 @@ class UsersController < ApplicationController
   end
 
   def show
-
     @posts = @user.posts.limit(5).order('id DESC')
     @born_from = Time.zone.today - @user.birthday
   end

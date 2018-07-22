@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[edit update destroy]
+  
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
@@ -15,7 +16,7 @@ class CommentsController < ApplicationController
   def edit
     respond_to do |format|
       format.js {
-        @id_comment = @comment.id
+        @comment_id = @comment.id
         render 'form'
       }
       format.html { render 'posts/show' }
@@ -45,10 +46,6 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:post_id, :content, :user_id)
-  end
-
-  def set_post
-
   end
 
   def set_comment
