@@ -1,15 +1,16 @@
 # README
-##　タイトル
+## タイトル
 Child Diary
 ## 概要
 子供を持つ親向けの子育て交流アプリケーションです。
+
 https://obscure-oasis-62140.herokuapp.com
 
 ## requirement
-Ruby2.3.3
-Rails 5.1.0
-PostgreSQL 10.1
-Bootstrap 4
+* Ruby2.3.3
+* Rails 5.1.0
+* PostgreSQL 10.1
+* Bootstrap 4
 
 ## 機能
 * ユーザーのCRUD処理
