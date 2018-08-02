@@ -13,9 +13,10 @@
             <p class="col-lg-8 text-left mb-1"><%= @user.child_name %>ちゃん</p>
           </div>
           <p>誕生日から<%= @born_from.to_i %>日目</p>
-          <p><%= link_to "ユーザー情報の編集", edit_user_path(@user), class: "btn btn-primary btn-block btn-font rounded-pill mb-2"  %></p>
-          <p><%= link_to "ユーザー情報を削除", user_path(@user), method: :delete, class: "btn btn-danger btn-block btn-font rounded-pill mb-2", data: { confirm: '本当に削除していいですか？' } %></p>
-
+          <% if current_user.id == @user.id %>
+            <p><%= link_to "ユーザー情報の編集", edit_user_path(@user), class: "btn btn-primary btn-block btn-font rounded-pill mb-2"  %></p>
+            <p><%= link_to "ユーザー情報を削除", user_path(@user), method: :delete, class: "btn btn-danger btn-block btn-font rounded-pill mb-2", data: { confirm: '本当に削除していいですか？' } %></p>
+          <% end %>
         </div>
         <div class="col-4 align-self-center mr-3">
           <%= image_tag @user.image,class: "rounded-circle" %>
