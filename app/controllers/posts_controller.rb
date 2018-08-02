@@ -7,8 +7,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to post_path(@post.id), notice: '日記を作成しました'
       unless @post.user.followers.blank?

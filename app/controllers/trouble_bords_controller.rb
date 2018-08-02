@@ -7,8 +7,7 @@ class TroubleBordsController < ApplicationController
   end
 
   def create
-    @newbord = TroubleBord.new(bord_params)
-    @newbord.user_id = current_user.id
+    @newbord = current_user.troublebords.build(bord_params)
     @newbord.save
     redirect_to trouble_bords_path
   end
