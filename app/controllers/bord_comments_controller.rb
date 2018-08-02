@@ -34,7 +34,7 @@ class BordCommentsController < ApplicationController
   end
 
   def destroy
-    @comment.delete
+    @comment.destroy
     respond_to do |format|
       format.js { render :index, notice:'削除しました' }
     end

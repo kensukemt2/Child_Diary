@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[edit update destroy]
-  
+
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
 
   def destroy
     respond_to do |format|
-      if @comment.delete
+      if @comment.destroy
         format.js { render :index, notice: 'コメントを削除しました。' }
       else
         format.html { redirect_to post_path(@comment.post_id) }
