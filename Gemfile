@@ -50,6 +50,8 @@ gem 'ransack'
 
 gem 'fog', '~> 1.41.0'
 
+gem 'dotenv-rails'
+
 gem "font-awesome-rails"
 
 gem 'font-awesome-sass', '~> 5.0.13'
@@ -58,7 +60,7 @@ gem 'therubyracer', platforms: :ruby
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 
 group :production do
-  gem 'dotenv-rails'
+
   # 今回実装見送り
   # Use Capistrano for deployment
   # gem 'capistrano', '3.6.0'
