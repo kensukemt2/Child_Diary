@@ -7,7 +7,7 @@ class CirclesController < ApplicationController
   end
 
   def create
-    @circle = current_user.circles.buil(circle_params)
+    @circle = current_user.circles.build(circle_params)
     if @circle.save
       circlemember = current_user.circle_members.create(circle_id: @circle.id)
       redirect_to circle_path(@circle.id), notice: 'サークルを作成しました'
