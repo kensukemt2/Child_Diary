@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.0'
 # Use postgresql as the database for Active Record
@@ -51,46 +50,41 @@ gem 'ransack'
 
 gem 'fog', '~> 1.41.0'
 
-gem 'dotenv-rails'
-
 gem "font-awesome-rails"
 
 gem 'font-awesome-sass', '~> 5.0.13'
 
 gem 'therubyracer', platforms: :ruby
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 
-# Use Capistrano for deployment
-group :development do
-  gem 'letter_opener_web'
-  gem 'letter_opener'
-
+group :production do
+  gem 'dotenv-rails'
+  # 今回実装見送り
+  # Use Capistrano for deployment
+  # gem 'capistrano', '3.6.0'
+  # gem 'capistrano-bundler'
+  # gem 'capistrano-rails'
+  # gem 'capistrano-rbenv'
+  # gem 'capistrano3-unicorn'
+  # gem 'unicorn'
+  # gem 'omniauth'
+  # gem 'omniauth-twitter'
+  # gem 'omniauth-facebook'
 end
-
-# gem 'unicorn'
-# gem 'omniauth'
-# gem 'omniauth-twitter'
-# gem 'omniauth-facebook'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13.0'
-  gem 'selenium-webdriver'
   gem 'faker'
-
-  #今回実装見送り
-  # gem 'capistrano', '3.6.0'
-  # gem 'capistrano-bundler'
-  # gem 'capistrano-rails'
-  # gem 'capistrano-rbenv'
-  # gem 'capistrano3-unicorn'
+  gem 'selenium-webdriver'
+  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 end
 
 group :development do
+  gem 'letter_opener'
+  gem 'letter_opener_web'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
