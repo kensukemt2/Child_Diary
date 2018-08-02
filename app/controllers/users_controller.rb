@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :force_top, only: :show
   before_action :set_user, only: %i[show edit update destroy]
+
   def new
     @user = User.new
   end
@@ -8,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to new_session_path, notice: "ユーザー登録完了しました"
+      redirect_to new_session_path, notice: 'ユーザー登録完了しました'
     else
       render 'new'
     end
@@ -23,7 +24,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_edit_params)
-      redirect_to user_path(@user), notice: "ユーザー情報を編集しました"
+      redirect_to user_path(@user), notice: 'ユーザー情報を編集しました'
     else
       render 'edit'
     end
@@ -31,7 +32,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to root_path, notice: "ユーザー情報を削除しました"
+    redirect_to root_path, notice: 'ユーザー情報を削除しました'
   end
 
   private

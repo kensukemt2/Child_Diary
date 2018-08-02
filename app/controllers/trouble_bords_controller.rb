@@ -1,5 +1,6 @@
 class TroubleBordsController < ApplicationController
   before_action :force_top
+
   def index
     @bords = TroubleBord.all
     @newbord = TroubleBord.new

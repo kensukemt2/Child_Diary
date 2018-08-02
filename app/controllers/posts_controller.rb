@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
   before_action :force_top
+
   def new
     @post = Post.new
   end
@@ -9,7 +10,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to post_path(@post.id), notice: "日記を作成しました"
+      redirect_to post_path(@post.id), notice: '日記を作成しました'
       unless @post.user.followers.blank?
         NoticeMailer.notice_mail(@post).deliver
       end
@@ -46,7 +47,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to post_path(@post.id), notice: "日記を編集しました"
+      redirect_to post_path(@post.id), notice: '日記を編集しました'
     else
       render 'edit'
     end
@@ -54,7 +55,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to user_path(current_user.id), notice:"ブログを削除しました！"
+    redirect_to user_path(current_user.id), notice: 'ブログを削除しました！'
   end
   private
   def post_params

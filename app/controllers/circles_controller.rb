@@ -1,6 +1,7 @@
 class CirclesController < ApplicationController
   before_action :set_circle, only: %i[show edit update destroy]
   before_action :force_top
+
   def new
     @circle = Circle.new
   end
@@ -10,7 +11,7 @@ class CirclesController < ApplicationController
     @circle.user_id = current_user.id
     if @circle.save
       circlemember = current_user.circle_members.create(circle_id: @circle.id)
-      redirect_to circle_path(@circle.id), notice: "サークルを作成しました"
+      redirect_to circle_path(@circle.id), notice: 'サークルを作成しました'
     else
       render :new
     end
